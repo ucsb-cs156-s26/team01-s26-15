@@ -11,7 +11,7 @@
               "not": [
                 {
                   "tableExists": {
-                    "tableName": "UCSBDININGCOMMONMENUITEMS"
+                    "tableName": "UCSBDININGCOMMONSMENUITEMS"
                   }
                 }
               ]
@@ -25,15 +25,15 @@
                     "column": {
                       "constraints": {
                         "primaryKey": true,
-                        "primaryKeyName": "DININGCOMMONMENUITEMS_PK"
+                        "primaryKeyName": "DININGCOMMONSMENUITEMS_PK"
                       },
                       "name": "ID",
-                      "type": "LONG"
+                      "type": "BIGINT"
                     }
                   },
                   {
                     "column": {
-                      "name": "DININGCOMMONSCODE",
+                      "name": "DINING_COMMONS_CODE",
                       "type": "VARCHAR(255)"
                     }
                   },
@@ -48,9 +48,9 @@
                       "name": "STATION",
                       "type": "VARCHAR(255)"
                     }
-                  }]
-                ,
-                "tableName": "UCSBDININGCOMMONMENUITEMS"
+                  }
+                ],
+                "tableName": "UCSBDININGCOMMONSMENUITEMS"
               }
             }]
 

@@ -10,7 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/** This is a HELPREQUEST entity that represents a Help row object for the datatable */
+/** This is a HELPREQUEST Tentity that represents a Help row object for the datatable */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

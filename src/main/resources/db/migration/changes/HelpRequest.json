@@ -68,7 +68,7 @@
                     }
                   }
                 ],
-                "tableName": "HELPREQUEST"
+                "tableName": "HELP_REQUEST"
               }
             }
           ]

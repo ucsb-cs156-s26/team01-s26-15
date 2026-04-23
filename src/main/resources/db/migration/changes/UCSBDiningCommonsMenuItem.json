@@ -27,7 +27,7 @@
                         "primaryKey": true,
                         "primaryKeyName": "DININGCOMMONMENUITEMS_PK"
                       },
-                      "name": "CODE",
+                      "name": "ID",
                       "type": "LONG"
                     }
                   },

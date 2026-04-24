@@ -2,7 +2,7 @@
     "databaseChangeLog": [
       {
         "changeSet": {
-          "id": "UCSBOrganizations-1",
+          "id": "UCSBOrganization-1",
           "author": "joyycheng",
           "preConditions": [
             {

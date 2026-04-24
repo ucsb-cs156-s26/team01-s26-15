@@ -23,6 +23,7 @@
                 "columns": [
                   {
                     "column": {
+                      "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
                         "primaryKeyName": "DININGCOMMONSMENUITEMS_PK"

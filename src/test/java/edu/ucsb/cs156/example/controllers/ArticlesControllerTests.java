@@ -225,7 +225,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
     String requestBody = mapper.writeValueAsString(editedArticle);
 
     when(articlesRepository.findById(eq(67L))).thenReturn(Optional.of(article1));
-    when(articlesRepository.save(article1)).thenReturn(editedArticle);
+    when(articlesRepository.save(article1)).thenAnswer(invocation -> invocation.getArgument(0));
     // act
     MvcResult response =
         mockMvc

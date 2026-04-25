@@ -214,7 +214,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
     Articles editedArticle =
         Articles.builder()
             .id(67L)
-            .title("To be ")
+            .title("To be")
             .url(
                 "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13")
             .explanation("aa")
@@ -237,6 +237,14 @@ public class ArticlesControllerTests extends ControllerTestCase {
                     .content(requestBody)
                     .with(csrf()))
             .andExpect(status().isOk())
+            .andExpect(jsonPath("$.title").value("To be"))
+            .andExpect(
+                jsonPath("$.url")
+                    .value(
+                        "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13"))
+            .andExpect(jsonPath("$.explanation").value("aa"))
+            .andExpect(jsonPath("$.email").value("zhao@ucsb.edu"))
+            .andExpect(jsonPath("$.dateAdded").value("2026-04-14T19:07:18.613Z"))
             .andReturn();
 
     // assert

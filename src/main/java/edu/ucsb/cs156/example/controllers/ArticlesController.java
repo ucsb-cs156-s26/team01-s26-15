@@ -6,7 +6,6 @@ import edu.ucsb.cs156.example.errors.EntityNotFoundException;
 import edu.ucsb.cs156.example.repositories.ArticlesRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import java.time.ZonedDateTime;
@@ -110,7 +109,8 @@ class ArticlesController extends ApiController {
   @PreAuthorize("hasRole('ROLE_ADMIN')")
   @PutMapping("")
   public Articles updateArticle(
-      @Parameter(name = "id") @RequestParam Long id, @RequestBody @Valid Articles incoming) {
+      @Parameter(name = "id") @RequestParam Long id,
+      @org.springframework.web.bind.annotation.RequestBody @Valid Articles incoming) {
 
     Articles article =
         ArticlesRepository.findById(id)
@@ -122,8 +122,7 @@ class ArticlesController extends ApiController {
     article.setEmail(incoming.getEmail());
     article.setDateAdded(incoming.getDateAdded());
 
-    ArticlesRepository.save(article);
-
-    return article;
+    Articles savedArticle = ArticlesRepository.save(article);
+    return savedArticle;
   }
 }

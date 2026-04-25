@@ -17,6 +17,8 @@ import edu.ucsb.cs156.example.testconfig.TestConfig;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -124,6 +126,68 @@ public class ArticlesControllerTests extends ControllerTestCase {
 
     // assert
     verify(articlesRepository, times(1)).save(article1);
+    String expectedJson = mapper.writeValueAsString(article1);
+    String responseString = response.getResponse().getContentAsString();
+    assertEquals(expectedJson, responseString);
+  }
+
+  @Test
+  public void logged_out_users_cannot_get_by_id() throws Exception {
+    mockMvc
+        .perform(get("/api/articles").param("id", "7"))
+        .andExpect(status().is(403)); // logged out users can't get by id
+  }
+
+  @WithMockUser(roles = {"USER"})
+  @Test
+  public void test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist() throws Exception {
+
+    // arrange
+
+    when(articlesRepository.findById(eq(7L))).thenReturn(Optional.empty());
+
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(get("/api/articles").param("id", "7"))
+            .andExpect(status().isNotFound())
+            .andReturn();
+
+    // assert
+
+    verify(articlesRepository, times(1)).findById(eq(7L));
+    Map<String, Object> json = responseToJson(response);
+    assertEquals("EntityNotFoundException", json.get("type"));
+    assertEquals("Articles with id 7 not found", json.get("message"));
+  }
+
+  @WithMockUser(roles = {"USER"})
+  @Test
+  public void test_that_logged_in_user_can_get_by_id_when_the_id_does_exist() throws Exception {
+
+    // arrange
+    ZonedDateTime zdt1 = ZonedDateTime.parse("2026-04-24T19:07:18.613Z");
+
+    Articles article1 =
+        Articles.builder()
+            .title("To be or not To be")
+            .url("https://www.amazon.com/hz/mobile")
+            .explanation("aa")
+            .email("xuanbo@ucsb.edu")
+            .dateAdded(zdt1)
+            .build();
+    when(articlesRepository.findById(eq(7L))).thenReturn(Optional.of(article1));
+
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(get("/api/articles").param("id", "7"))
+            .andExpect(status().isOk())
+            .andReturn();
+
+    // assert
+
+    verify(articlesRepository, times(1)).findById(eq(7L));
     String expectedJson = mapper.writeValueAsString(article1);
     String responseString = response.getResponse().getContentAsString();
     assertEquals(expectedJson, responseString);

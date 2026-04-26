@@ -218,7 +218,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
             .title("To be")
             .url(
                 "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13")
-            .explanation("aa")
+            .explanation("aaa")
             .email("zhao@ucsb.edu")
             .dateAdded(zdt2)
             .build();
@@ -243,7 +243,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
                 jsonPath("$.url")
                     .value(
                         "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13"))
-            .andExpect(jsonPath("$.explanation").value("aa"))
+            .andExpect(jsonPath("$.explanation").value("aaa"))
             .andExpect(jsonPath("$.email").value("zhao@ucsb.edu"))
             .andExpect(jsonPath("$.dateAdded").value("2026-04-14T19:07:18.613Z"))
             .andReturn();
@@ -257,7 +257,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
     assertEquals(
         "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13",
         article1.getUrl());
-    assertEquals("aa", article1.getExplanation());
+    assertEquals("aaa", article1.getExplanation());
     assertEquals("zhao@ucsb.edu", article1.getEmail());
     assertEquals(zdt2, article1.getDateAdded());
 

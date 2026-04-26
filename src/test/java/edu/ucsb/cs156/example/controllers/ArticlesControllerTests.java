@@ -204,6 +204,7 @@ public class ArticlesControllerTests extends ControllerTestCase {
 
     Articles article1 =
         Articles.builder()
+            .id(67L)
             .title("To be or not To be")
             .url("https://www.amazon.com/hz/mobile")
             .explanation("aa")
@@ -250,6 +251,16 @@ public class ArticlesControllerTests extends ControllerTestCase {
     // assert
     verify(articlesRepository, times(1)).findById(67L);
     verify(articlesRepository, times(1)).save(article1);
+
+    // ✅ Add these to kill the surviving mutations
+    assertEquals("To be", article1.getTitle());
+    assertEquals(
+        "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13",
+        article1.getUrl());
+    assertEquals("aa", article1.getExplanation());
+    assertEquals("zhao@ucsb.edu", article1.getEmail());
+    assertEquals(zdt2, article1.getDateAdded());
+
     String responseString = response.getResponse().getContentAsString();
     assertEquals(requestBody, responseString);
   }

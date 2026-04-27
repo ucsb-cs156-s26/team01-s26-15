@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = &quot;MenuItemReview&quot;)
 @RequestMapping(&quot;/api/menuitemreview&quot;)
 @RestController
-<span class="nc" id="L23">@Slf4j</span>
-<span class="nc" id="L24">public class MenuItemReviewController extends ApiController {</span>
+<span class="fc" id="L23">@Slf4j</span>
+<span class="fc" id="L24">public class MenuItemReviewController extends ApiController {</span>
 
   @Autowired MenuItemReviewRepository menuItemReviewRepository;
 
@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
   @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
   @GetMapping(&quot;/all&quot;)
   public Iterable&lt;MenuItemReview&gt; allReviews() {
-<span class="nc" id="L32">    Iterable&lt;MenuItemReview&gt; menuitemreviews = menuItemReviewRepository.findAll();</span>
-<span class="nc" id="L33">    return menuitemreviews;</span>
+<span class="fc" id="L32">    Iterable&lt;MenuItemReview&gt; menuitemreviews = menuItemReviewRepository.findAll();</span>
+<span class="fc" id="L33">    return menuitemreviews;</span>
   }
 
   @Operation(summary = &quot;Create a new review&quot;)
@@ -46,18 +46,18 @@ import org.springframework.web.bind.annotation.RestController;
           LocalDateTime dateReviewed,
       @Parameter(name = &quot;comments&quot;) @RequestParam String comments) {
 
-<span class="nc" id="L49">    log.info(&quot;dateReviewed={}&quot;, dateReviewed);</span>
+<span class="fc" id="L49">    log.info(&quot;dateReviewed={}&quot;, dateReviewed);</span>
 
-<span class="nc" id="L51">    MenuItemReview review = new MenuItemReview();</span>
-<span class="nc" id="L52">    review.setItemId(itemId);</span>
-<span class="nc" id="L53">    review.setReviewerEmail(reviewerEmail);</span>
-<span class="nc" id="L54">    review.setStars(stars);</span>
-<span class="nc" id="L55">    review.setDateReviewed(dateReviewed);</span>
-<span class="nc" id="L56">    review.setComments(comments);</span>
+<span class="fc" id="L51">    MenuItemReview review = new MenuItemReview();</span>
+<span class="fc" id="L52">    review.setItemId(itemId);</span>
+<span class="fc" id="L53">    review.setReviewerEmail(reviewerEmail);</span>
+<span class="fc" id="L54">    review.setStars(stars);</span>
+<span class="fc" id="L55">    review.setDateReviewed(dateReviewed);</span>
+<span class="fc" id="L56">    review.setComments(comments);</span>
 
-<span class="nc" id="L58">    MenuItemReview savedReview = menuItemReviewRepository.save(review);</span>
+<span class="fc" id="L58">    MenuItemReview savedReview = menuItemReviewRepository.save(review);</span>
 
-<span class="nc" id="L60">    return savedReview;</span>
+<span class="fc" id="L60">    return savedReview;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

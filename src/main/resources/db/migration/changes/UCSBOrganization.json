@@ -24,7 +24,6 @@
                 "columns": [
                   {
                     "column": {
-                      "autoIncrement": true,
                       "constraints": {
                         "primaryKey": true,
                         "primaryKeyName": "UCSBORGANIZATIONS_PK"

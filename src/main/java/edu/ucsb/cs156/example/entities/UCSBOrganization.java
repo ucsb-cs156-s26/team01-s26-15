@@ -2,7 +2,6 @@ package edu.ucsb.cs156.example.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,6 +20,6 @@ public class UCSBOrganization {
   @Id private String orgCode;
 
   private String orgTranslationShort;
-  private LocalDateTime orgTranslation;
+  private String orgTranslation;
   private boolean inactive;
 }

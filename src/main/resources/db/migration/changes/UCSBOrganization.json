@@ -30,7 +30,7 @@
                         "primaryKeyName": "UCSBORGANIZATIONS_PK"
                       },
                       "name": "ID",
-                      "type": "BIGINT"
+                      "type": "LONG"
                     }
                   },
                   {

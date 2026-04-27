@@ -1991,7 +1991,7 @@
 <td class=''><pre><span  class=''>  public Object deleteArticle(@Parameter(name = &#34;id&#34;) @RequestParam Long id) {</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@36931450_140'/>
 140
 </td>
@@ -2002,10 +2002,10 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>    Articles article =</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    Articles article =</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@36931450_141'/>
 141
 </td>
@@ -2016,23 +2016,23 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        ArticlesRepository.findById(id)</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        ArticlesRepository.findById(id)</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@36931450_142'/>
 142
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@36931450_142'>1</a>
 <span>
-1. lambda$deleteArticle$2 : replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::lambda$deleteArticle$2 &rarr; NO_COVERAGE<br/>
+1. lambda$deleteArticle$2 : replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::lambda$deleteArticle$2 &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>            .orElseThrow(() -&#62; new EntityNotFoundException(Articles.class, id));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            .orElseThrow(() -&#62; new EntityNotFoundException(Articles.class, id));</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -2049,36 +2049,36 @@
 <td class=''><pre><span  class=''></span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@36931450_144'/>
 144
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@36931450_144'>1</a>
 <span>
-1. deleteArticle : removed call to edu/ucsb/cs156/example/repositories/ArticlesRepository::delete &rarr; NO_COVERAGE<br/>
+1. deleteArticle : removed call to edu/ucsb/cs156/example/repositories/ArticlesRepository::delete &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>    ArticlesRepository.delete(article);</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    ArticlesRepository.delete(article);</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@36931450_145'/>
 145
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@36931450_145'>1</a>
 <span>
-1. deleteArticle : replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::deleteArticle &rarr; NO_COVERAGE<br/>
+1. deleteArticle : replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::deleteArticle &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>    return genericMessage(&#34;Article with id %s deleted&#34;.formatted(id));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    return genericMessage(&#34;Article with id %s deleted&#34;.formatted(id));</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -2295,7 +2295,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@36931450_142'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$deleteArticle$2<br/><b>Killed by : </b>none</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::lambda$deleteArticle$2 &rarr; NO_COVERAGE</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$deleteArticle$2<br/><b>Killed by : </b>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_tries_to_delete_non_existant_article_and_gets_right_error_message()]</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::lambda$deleteArticle$2 &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -2306,7 +2306,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@36931450_144'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteArticle<br/><b>Killed by : </b>none</span></span> removed call to edu/ucsb/cs156/example/repositories/ArticlesRepository::delete &rarr; NO_COVERAGE</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteArticle<br/><b>Killed by : </b>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_can_delete_an_article()]</span></span> removed call to edu/ucsb/cs156/example/repositories/ArticlesRepository::delete &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -2317,7 +2317,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@36931450_145'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteArticle<br/><b>Killed by : </b>none</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::deleteArticle &rarr; NO_COVERAGE</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteArticle<br/><b>Killed by : </b>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_can_delete_an_article()]</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/ArticlesController::deleteArticle &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -2343,7 +2343,7 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:logged_in_users_can_get_all()] (6 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:logged_in_user_can_get_all_ucsbdates()] (68 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist()] (8 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_cannot_edit_ucsbdate_that_does_not_exist()] (60 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:an_admin_user_can_post_a_new_article()] (11 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_can_edit_an_existing_article()] (40 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_exist()] (10 ms)</li>
+<li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:logged_in_users_can_get_all()] (6 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:logged_in_user_can_get_all_ucsbdates()] (48 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist()] (7 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_cannot_edit_ucsbdate_that_does_not_exist()] (55 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_tries_to_delete_non_existant_article_and_gets_right_error_message()] (10 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:an_admin_user_can_post_a_new_article()] (10 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_can_edit_an_existing_article()] (30 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:admin_can_delete_an_article()] (10 ms)</li><li>edu.ucsb.cs156.example.controllers.ArticlesControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.ArticlesControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_exist()] (11 ms)</li>
 </ul>
 
 <br/>

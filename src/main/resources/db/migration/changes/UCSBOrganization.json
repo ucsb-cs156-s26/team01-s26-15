@@ -29,12 +29,6 @@
                         "primaryKey": true,
                         "primaryKeyName": "UCSBORGANIZATIONS_PK"
                       },
-                      "name": "ID",
-                      "type": "LONG"
-                    }
-                  },
-                  {
-                    "column": {
                       "name": "ORG_CODE",
                       "type": "VARCHAR(255)"
                     }

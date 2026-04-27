@@ -22,9 +22,8 @@ import lombok.NoArgsConstructor;
 public class UCSBOrganization {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
-
   private String orgCode;
+
   private String orgTranslationShort;
   private LocalDateTime orgTranslation;
   private boolean inactive;

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = &quot;UCSBOrganizations&quot;)
 @RequestMapping(&quot;/api/ucsborganizations&quot;)
 @RestController
-<span class="nc" id="L21">@Slf4j</span>
-<span class="nc" id="L22">public class UCSBOrganizationsController extends ApiController {</span>
+<span class="fc" id="L21">@Slf4j</span>
+<span class="fc" id="L22">public class UCSBOrganizationsController extends ApiController {</span>
 
   @Autowired UCSBOrganizationRepository ucsbOrganizationRepository;
 
@@ -32,8 +32,8 @@ import org.springframework.web.bind.annotation.RestController;
   @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
   @GetMapping(&quot;/all&quot;)
   public Iterable&lt;UCSBOrganization&gt; allUCSBOrganizations() {
-<span class="nc" id="L35">    Iterable&lt;UCSBOrganization&gt; organizations = ucsbOrganizationRepository.findAll();</span>
-<span class="nc" id="L36">    return organizations;</span>
+<span class="fc" id="L35">    Iterable&lt;UCSBOrganization&gt; organizations = ucsbOrganizationRepository.findAll();</span>
+<span class="fc" id="L36">    return organizations;</span>
   }
 
   /**
@@ -54,15 +54,15 @@ import org.springframework.web.bind.annotation.RestController;
       @Parameter(name = &quot;orgTranslation&quot;) @RequestParam String orgTranslation,
       @Parameter(name = &quot;inactive&quot;) @RequestParam Boolean inactive) {
 
-<span class="nc" id="L57">    UCSBOrganization ucsbOrganization = new UCSBOrganization();</span>
-<span class="nc" id="L58">    ucsbOrganization.setOrgCode(orgCode);</span>
-<span class="nc" id="L59">    ucsbOrganization.setOrgTranslationShort(orgTranslationShort);</span>
-<span class="nc" id="L60">    ucsbOrganization.setOrgTranslation(orgTranslation);</span>
-<span class="nc" id="L61">    ucsbOrganization.setInactive(inactive);</span>
+<span class="fc" id="L57">    UCSBOrganization ucsbOrganization = new UCSBOrganization();</span>
+<span class="fc" id="L58">    ucsbOrganization.setOrgCode(orgCode);</span>
+<span class="fc" id="L59">    ucsbOrganization.setOrgTranslationShort(orgTranslationShort);</span>
+<span class="fc" id="L60">    ucsbOrganization.setOrgTranslation(orgTranslation);</span>
+<span class="fc" id="L61">    ucsbOrganization.setInactive(inactive);</span>
 
-<span class="nc" id="L63">    UCSBOrganization savedUcsbOrganization = ucsbOrganizationRepository.save(ucsbOrganization);</span>
+<span class="fc" id="L63">    UCSBOrganization savedUcsbOrganization = ucsbOrganizationRepository.save(ucsbOrganization);</span>
 
-<span class="nc" id="L65">    return savedUcsbOrganization;</span>
+<span class="fc" id="L65">    return savedUcsbOrganization;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

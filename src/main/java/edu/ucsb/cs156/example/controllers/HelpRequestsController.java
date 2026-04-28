@@ -35,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,7 +54,7 @@ public class HelpRequestsController extends ApiController {
   @Autowired HelpRequestRepository helpRequestRepository;
 
   /**
-   * List all UCSB dates
+   * List all HelpRequests
    *
    * @return an iterable of HelpRequests
    */
@@ -73,7 +74,7 @@ public class HelpRequestsController extends ApiController {
    * @param tableOrBreakoutRoom where the requester is physically/digitally located
    * @param requestTime time when help request was made
    * @param explanation what the porblem is
-   * @param solved whether the problem has been asnwered/sovled
+   * @param solved whether the problem has been answered/sovled
    * @return saved help requests
    */
   @Operation(summary = "Create a new help request")
@@ -158,5 +159,24 @@ public class HelpRequestsController extends ApiController {
     helpRequestRepository.save(helpRequest);
 
     return helpRequest;
+  }
+
+  /**
+   * Delete a HelpRequest
+   *
+   * @param id the id of the help request to delete
+   * @return a message indicating the help request was deleted
+   */
+  @Operation(summary = "Delete a help request")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @DeleteMapping("")
+  public Object deleteHelpRequest(@Parameter(name = "id") @RequestParam Long id) {
+    HelpRequest helpRequest =
+        helpRequestRepository
+            .findById(id)
+            .orElseThrow(() -> new EntityNotFoundException(HelpRequest.class, id));
+
+    helpRequestRepository.delete(helpRequest);
+    return genericMessage("HelpRequest with id %s deleted".formatted(id));
   }
 }

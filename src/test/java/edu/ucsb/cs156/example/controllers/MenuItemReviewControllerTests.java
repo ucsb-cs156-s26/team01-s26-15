@@ -17,6 +17,7 @@ import edu.ucsb.cs156.example.testconfig.TestConfig;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -148,5 +149,51 @@ public class MenuItemReviewControllerTests extends ControllerTestCase {
     String responseString = response.getResponse().getContentAsString();
 
     assertEquals(expectedJson, responseString);
+  }
+
+  @Test
+  public void logged_out_users_cannot_get_by_id() throws Exception {
+    mockMvc.perform(get("/api/menuitemreview").param("id", "7")).andExpect(status().is(403));
+  }
+
+  @WithMockUser(roles = {"USER"})
+  @Test
+  public void logged_in_user_can_get_by_id_when_id_exists() throws Exception {
+
+    LocalDateTime dateReviewed = LocalDateTime.parse("2026-04-27T12:30:00");
+
+    MenuItemReview review =
+        MenuItemReview.builder()
+            .itemId(1)
+            .reviewerEmail("test@example.com")
+            .stars(5)
+            .dateReviewed(dateReviewed)
+            .comments("Great food")
+            .build();
+
+    when(menuItemReviewRepository.findById(eq(7L))).thenReturn(Optional.of(review));
+
+    MvcResult response =
+        mockMvc
+            .perform(get("/api/menuitemreview").param("id", "7"))
+            .andExpect(status().isOk())
+            .andReturn();
+
+    verify(menuItemReviewRepository, times(1)).findById(eq(7L));
+
+    String expectedJson = mapper.writeValueAsString(review);
+    String responseString = response.getResponse().getContentAsString();
+
+    assertEquals(expectedJson, responseString);
+  }
+
+  @WithMockUser(roles = {"USER"})
+  @Test
+  public void logged_in_user_cannot_get_by_id_when_id_does_not_exist() throws Exception {
+    when(menuItemReviewRepository.findById(eq(7L))).thenReturn(Optional.empty());
+
+    mockMvc.perform(get("/api/menuitemreview").param("id", "7")).andExpect(status().isNotFound());
+
+    verify(menuItemReviewRepository, times(1)).findById(eq(7L));
   }
 }

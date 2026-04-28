@@ -222,7 +222,7 @@ public class HelpRequestsControllerTests extends ControllerTestCase {
         HelpRequest.builder()
             .requesterEmail("kristopherrangelEDITED@ucsb.edu")
             .teamId("s22-5pm-3EDITED")
-            .tableOrBreakoutRoom("7")
+            .tableOrBreakoutRoom("7EDITED")
             .requestTime(ldt2)
             .explanation("Need help with Swagger-uiEDITED")
             .solved(false)

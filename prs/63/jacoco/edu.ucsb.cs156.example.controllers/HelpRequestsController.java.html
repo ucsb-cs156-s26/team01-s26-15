@@ -171,13 +171,13 @@ import org.springframework.web.bind.annotation.RestController;
   @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
   @DeleteMapping(&quot;&quot;)
   public Object deleteHelpRequest(@Parameter(name = &quot;id&quot;) @RequestParam Long id) {
-<span class="nc" id="L174">    HelpRequest helpRequest =</span>
+<span class="fc" id="L174">    HelpRequest helpRequest =</span>
         helpRequestRepository
-<span class="nc" id="L176">            .findById(id)</span>
-<span class="nc" id="L177">            .orElseThrow(() -&gt; new EntityNotFoundException(HelpRequest.class, id));</span>
+<span class="fc" id="L176">            .findById(id)</span>
+<span class="fc" id="L177">            .orElseThrow(() -&gt; new EntityNotFoundException(HelpRequest.class, id));</span>
 
-<span class="nc" id="L179">    helpRequestRepository.delete(helpRequest);</span>
-<span class="nc" id="L180">    return genericMessage(&quot;HelpRequest with id %s deleted&quot;.formatted(id));</span>
+<span class="fc" id="L179">    helpRequestRepository.delete(helpRequest);</span>
+<span class="fc" id="L180">    return genericMessage(&quot;HelpRequest with id %s deleted&quot;.formatted(id));</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

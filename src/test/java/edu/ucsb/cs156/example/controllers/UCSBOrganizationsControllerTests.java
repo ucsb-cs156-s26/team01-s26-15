@@ -94,7 +94,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
             .orgCode("AACF")
             .orgTranslationShort("AsianAmericanChristianFellowship")
             .orgTranslation("UCSBAsianAmericanChristianFellowship")
-            .inactive(false)
+            .inactive(true)
             .build();
 
     when(ucsbOrganizationRepository.save(eq(ucsbOrganization1))).thenReturn(ucsbOrganization1);
@@ -103,7 +103,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
     MvcResult response =
         mockMvc
             .perform(
-                post("/api/ucsborganizations/post?orgCode=AACF&orgTranslationShort=AsianAmericanChristianFellowship&orgTranslation=UCSBAsianAmericanChristianFellowship&inactive=false")
+                post("/api/ucsborganizations/post?orgCode=AACF&orgTranslationShort=AsianAmericanChristianFellowship&orgTranslation=UCSBAsianAmericanChristianFellowship&inactive=true")
                     .with(csrf()))
             .andExpect(status().isOk())
             .andReturn();

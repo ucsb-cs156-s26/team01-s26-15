@@ -65,7 +65,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
             .orgCode("AACF")
             .orgTranslationShort("Asian American Christian Fellowship")
             .orgTranslation("UCSB Asian American Christian Fellowship")
-            .inactive(false)
+            .inactive(true)
             .build();
 
     ArrayList<UCSBOrganization> expectedOrganizations = new ArrayList<>();

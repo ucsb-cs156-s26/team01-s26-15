@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -124,5 +125,23 @@ class ArticlesController extends ApiController {
 
     Articles savedArticle = ArticlesRepository.save(article);
     return savedArticle;
+  }
+
+  /**
+   * Delete a article
+   *
+   * @param id the id of the article to delete
+   * @return a message indicating the article was deleted
+   */
+  @Operation(summary = "Delete a article")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  @DeleteMapping("")
+  public Object deleteArticle(@Parameter(name = "id") @RequestParam Long id) {
+    Articles article =
+        ArticlesRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException(Articles.class, id));
+
+    ArticlesRepository.delete(article);
+    return genericMessage("Article with id %s deleted".formatted(id));
   }
 }

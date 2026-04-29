@@ -303,4 +303,58 @@ public class ArticlesControllerTests extends ControllerTestCase {
     Map<String, Object> json = responseToJson(response);
     assertEquals("Articles with id 67 not found", json.get("message"));
   }
+
+  @WithMockUser(roles = {"ADMIN", "USER"})
+  @Test
+  public void admin_can_delete_an_article() throws Exception {
+    // arrange
+
+    ZonedDateTime zdt1 = ZonedDateTime.parse("2026-04-24T19:07:18.613Z");
+
+    Articles article1 =
+        Articles.builder()
+            .title("To be or not To be")
+            .url("https://www.amazon.com/hz/mobile")
+            .explanation("aa")
+            .email("xuanbo@ucsb.edu")
+            .dateAdded(zdt1)
+            .build();
+
+    when(articlesRepository.findById(eq(67L))).thenReturn(Optional.of(article1));
+
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(delete("/api/articles").param("id", "67").with(csrf()))
+            .andExpect(status().isOk())
+            .andReturn();
+
+    // assert
+    verify(articlesRepository, times(1)).findById(67L);
+    verify(articlesRepository, times(1)).delete(eq(article1));
+
+    Map<String, Object> json = responseToJson(response);
+    assertEquals("Article with id 67 deleted", json.get("message"));
+  }
+
+  @WithMockUser(roles = {"ADMIN", "USER"})
+  @Test
+  public void admin_tries_to_delete_non_existant_article_and_gets_right_error_message()
+      throws Exception {
+    // arrange
+
+    when(articlesRepository.findById(eq(15L))).thenReturn(Optional.empty());
+
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(delete("/api/articles").param("id", "15").with(csrf()))
+            .andExpect(status().isNotFound())
+            .andReturn();
+
+    // assert
+    verify(articlesRepository, times(1)).findById(15L);
+    Map<String, Object> json = responseToJson(response);
+    assertEquals("Articles with id 15 not found", json.get("message"));
+  }
 }

@@ -122,13 +122,13 @@ import org.springframework.web.bind.annotation.RestController;
   @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
   @DeleteMapping(&quot;&quot;)
   public Object deleteMenuItemReview(@Parameter(name = &quot;id&quot;) @RequestParam Long id) {
-<span class="nc" id="L125">    MenuItemReview menuItemReview =</span>
+<span class="fc" id="L125">    MenuItemReview menuItemReview =</span>
         menuItemReviewRepository
-<span class="nc" id="L127">            .findById(id)</span>
-<span class="nc" id="L128">            .orElseThrow(() -&gt; new EntityNotFoundException(MenuItemReview.class, id));</span>
+<span class="fc" id="L127">            .findById(id)</span>
+<span class="fc" id="L128">            .orElseThrow(() -&gt; new EntityNotFoundException(MenuItemReview.class, id));</span>
 
-<span class="nc" id="L130">    menuItemReviewRepository.delete(menuItemReview);</span>
-<span class="nc" id="L131">    return genericMessage(&quot;MenuItemReview with id %s deleted&quot;.formatted(id));</span>
+<span class="fc" id="L130">    menuItemReviewRepository.delete(menuItemReview);</span>
+<span class="fc" id="L131">    return genericMessage(&quot;MenuItemReview with id %s deleted&quot;.formatted(id));</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

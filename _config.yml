@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s26/team01-s26-15
 owner: ucsb-cs156-s26
 repo_name: team01-s26-15
-pull_requests: [{"author":{"id":"U_kgDOCuio7Q","is_bot":false,"login":"joyycheng","name":"Joy Cheng"},"headRefName":"joy-ucsborganizations-get-by-id","number":67,"title":"Joy -  add GET by id for UCSBOrganization","url":"https://github.com/ucsb-cs156-s26/team01-s26-15/pull/67"},{"author":{"id":"U_kgDOCuio7Q","is_bot":false,"login":"joyycheng","name":"Joy Cheng"},"headRefName":"joy-ucsborganizations-controllers","number":64,"title":"joy - create ucsborganizations controller","url":"https://github.com/ucsb-cs156-s26/team01-s26-15/pull/64"}]
+pull_requests: []

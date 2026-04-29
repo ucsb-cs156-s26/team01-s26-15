@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s26/team01-s26-15
 owner: ucsb-cs156-s26
 repo_name: team01-s26-15
-pull_requests: [{"author":{"id":"U_kgDOCWJ8dA","is_bot":false,"login":"f1amek1ller","name":"Omega"},"headRefName":"ll-RecommendationRequest-delete","number":74,"title":"Add DELETE endpoint for RecommendationRequest","url":"https://github.com/ucsb-cs156-s26/team01-s26-15/pull/74"},{"author":{"id":"U_kgDOCuio7Q","is_bot":false,"login":"joyycheng","name":"Joy Cheng"},"headRefName":"joy-delete-for-organizations-table","number":69,"title":"Joy - delete for organizations table","url":"https://github.com/ucsb-cs156-s26/team01-s26-15/pull/69"}]
+pull_requests: [{"author":{"id":"U_kgDOCuio7Q","is_bot":false,"login":"joyycheng","name":"Joy Cheng"},"headRefName":"joy-delete-for-organizations-table","number":69,"title":"Joy - delete for organizations table","url":"https://github.com/ucsb-cs156-s26/team01-s26-15/pull/69"}]

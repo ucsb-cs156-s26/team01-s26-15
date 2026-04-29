@@ -22,6 +22,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MvcResult;
@@ -191,5 +192,115 @@ public class ArticlesControllerTests extends ControllerTestCase {
     String expectedJson = mapper.writeValueAsString(article1);
     String responseString = response.getResponse().getContentAsString();
     assertEquals(expectedJson, responseString);
+  }
+
+  @WithMockUser(roles = {"ADMIN", "USER"})
+  @Test
+  public void admin_can_edit_an_existing_article() throws Exception {
+    // arrange
+
+    ZonedDateTime zdt1 = ZonedDateTime.parse("2026-04-24T19:07:18.613Z");
+    ZonedDateTime zdt2 = ZonedDateTime.parse("2026-04-14T19:07:18.613Z");
+
+    Articles article1 =
+        Articles.builder()
+            .id(67L)
+            .title("To be or not To be")
+            .url("https://www.amazon.com/hz/mobile")
+            .explanation("aa")
+            .email("xuanbo@ucsb.edu")
+            .dateAdded(zdt1)
+            .build();
+
+    Articles editedArticle =
+        Articles.builder()
+            .id(67L)
+            .title("To be")
+            .url(
+                "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13")
+            .explanation("aaa")
+            .email("zhao@ucsb.edu")
+            .dateAdded(zdt2)
+            .build();
+
+    String requestBody = mapper.writeValueAsString(editedArticle);
+
+    when(articlesRepository.findById(eq(67L))).thenReturn(Optional.of(article1));
+    when(articlesRepository.save(article1)).thenAnswer(invocation -> invocation.getArgument(0));
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(
+                put("/api/articles")
+                    .param("id", "67")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .characterEncoding("utf-8")
+                    .content(requestBody)
+                    .with(csrf()))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.title").value("To be"))
+            .andExpect(
+                jsonPath("$.url")
+                    .value(
+                        "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13"))
+            .andExpect(jsonPath("$.explanation").value("aaa"))
+            .andExpect(jsonPath("$.email").value("zhao@ucsb.edu"))
+            .andExpect(jsonPath("$.dateAdded").value("2026-04-14T19:07:18.613Z"))
+            .andReturn();
+
+    // assert
+    verify(articlesRepository, times(1)).findById(67L);
+    verify(articlesRepository, times(1)).save(article1);
+
+    // ✅ Add these to kill the surviving mutations
+    assertEquals("To be", article1.getTitle());
+    assertEquals(
+        "https://docs.google.com/presentation/d/1BTg6PEWBjqGG7nBHlcOk1WL7SDR4TywB-SPjUVFyZmY/edit?slide=id.p13#slide=id.p13",
+        article1.getUrl());
+    assertEquals("aaa", article1.getExplanation());
+    assertEquals("zhao@ucsb.edu", article1.getEmail());
+    assertEquals(zdt2, article1.getDateAdded());
+
+    String responseString = response.getResponse().getContentAsString();
+    assertEquals(requestBody, responseString);
+  }
+
+  @WithMockUser(roles = {"ADMIN", "USER"})
+  @Test
+  public void admin_cannot_edit_ucsbdate_that_does_not_exist() throws Exception {
+    // arrange
+
+    ZonedDateTime zdt1 = ZonedDateTime.parse("2026-04-24T19:07:18.613Z");
+
+    Articles article1 =
+        Articles.builder()
+            .title("To be or not To be")
+            .url("https://www.amazon.com/hz/mobile")
+            .explanation("aa")
+            .email("xuanbo@ucsb.edu")
+            .dateAdded(zdt1)
+            .build();
+
+    String requestBody = mapper.writeValueAsString(article1);
+
+    when(articlesRepository.findById(eq(67L))).thenReturn(Optional.empty());
+
+    // act
+    MvcResult response =
+        mockMvc
+            .perform(
+                put("/api/articles")
+                    .param("id", "67")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .characterEncoding("utf-8")
+                    .content(requestBody)
+                    .with(csrf()))
+            .andExpect(status().isNotFound())
+            .andReturn();
+
+    // assert
+    verify(articlesRepository, times(1)).findById(67L);
+    Map<String, Object> json = responseToJson(response);
+    assertEquals("Articles with id 67 not found", json.get("message"));
   }
 }

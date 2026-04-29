@@ -76,12 +76,12 @@ import org.springframework.web.bind.annotation.RestController;
   @PreAuthorize(&quot;hasRole('ROLE_USER')&quot;)
   @GetMapping(&quot;&quot;)
   public UCSBOrganization getById(@Parameter(name = &quot;orgCode&quot;) @RequestParam String orgCode) {
-<span class="nc" id="L79">    UCSBOrganization organizations =</span>
+<span class="fc" id="L79">    UCSBOrganization organizations =</span>
         ucsbOrganizationRepository
-<span class="nc" id="L81">            .findById(orgCode)</span>
-<span class="nc" id="L82">            .orElseThrow(() -&gt; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span>
+<span class="fc" id="L81">            .findById(orgCode)</span>
+<span class="fc" id="L82">            .orElseThrow(() -&gt; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span>
 
-<span class="nc" id="L84">    return organizations;</span>
+<span class="fc" id="L84">    return organizations;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

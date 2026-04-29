@@ -190,7 +190,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
         UCSBOrganization.builder()
             .orgCode("Epic")
             .orgTranslation("EpicMovementCru")
-            .orgTranslation("EpicMovement")
+            .orgTranslationShort("EpicMovement")
             .inactive(true)
             .build();
 
@@ -198,7 +198,7 @@ public class UCSBOrganizationsControllerTests extends ControllerTestCase {
         UCSBOrganization.builder()
             .orgCode("Epic")
             .orgTranslation("UCSBEpicMovementCru")
-            .orgTranslation("UCSBEpicMovement")
+            .orgTranslationShort("UCSBEpicMovement")
             .inactive(false)
             .build();
 

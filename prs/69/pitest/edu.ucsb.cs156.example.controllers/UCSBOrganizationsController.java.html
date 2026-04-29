@@ -1831,7 +1831,7 @@
 <td class=''><pre><span  class=''>  public Object deleteOrganization(@Parameter(name = &#34;orgCode&#34;) @RequestParam String orgCode) {</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@7ac1161f_129'/>
 129
 </td>
@@ -1842,7 +1842,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>    UCSBOrganization organizations =</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    UCSBOrganization organizations =</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1859,7 +1859,7 @@
 <td class=''><pre><span  class=''>        ucsbOrganizationRepository</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@7ac1161f_131'/>
 131
 </td>
@@ -1870,23 +1870,23 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>            .findById(orgCode)</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>            .findById(orgCode)</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@7ac1161f_132'/>
 132
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7ac1161f_132'>1</a>
 <span>
-1. lambda$deleteOrganization$2 : replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::lambda$deleteOrganization$2 &rarr; NO_COVERAGE<br/>
+1. lambda$deleteOrganization$2 : replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::lambda$deleteOrganization$2 &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>            .orElseThrow(() -&#62; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            .orElseThrow(() -&#62; new EntityNotFoundException(UCSBOrganization.class, orgCode));</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -1903,36 +1903,36 @@
 <td class=''><pre><span  class=''></span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@7ac1161f_134'/>
 134
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7ac1161f_134'>1</a>
 <span>
-1. deleteOrganization : removed call to edu/ucsb/cs156/example/repositories/UCSBOrganizationRepository::delete &rarr; NO_COVERAGE<br/>
+1. deleteOrganization : removed call to edu/ucsb/cs156/example/repositories/UCSBOrganizationRepository::delete &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>    ucsbOrganizationRepository.delete(organizations);</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    ucsbOrganizationRepository.delete(organizations);</span></pre></td></tr>
 
 <tr>
-<td class='uncovered'>
+<td class='covered'>
 <a name='org.pitest.mutationtest.report.html.SourceFile@7ac1161f_135'/>
 135
 </td>
-<td class='survived'>
+<td class='killed'>
 <span class='pop'>
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7ac1161f_135'>1</a>
 <span>
-1. deleteOrganization : replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::deleteOrganization &rarr; NO_COVERAGE<br/>
+1. deleteOrganization : replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::deleteOrganization &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>    return genericMessage(&#34;UCSBOrganization with id %s deleted&#34;.formatted(orgCode));</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>    return genericMessage(&#34;UCSBOrganization with id %s deleted&#34;.formatted(orgCode));</span></pre></td></tr>
 
 <tr>
 <td class='na'>
@@ -2116,7 +2116,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7ac1161f_132'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$deleteOrganization$2<br/><b>Killed by : </b>none</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::lambda$deleteOrganization$2 &rarr; NO_COVERAGE</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$deleteOrganization$2<br/><b>Killed by : </b>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_tries_to_delete_non_existant_organization_and_gets_right_error_message()]</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::lambda$deleteOrganization$2 &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -2127,7 +2127,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7ac1161f_134'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteOrganization<br/><b>Killed by : </b>none</span></span> removed call to edu/ucsb/cs156/example/repositories/UCSBOrganizationRepository::delete &rarr; NO_COVERAGE</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteOrganization<br/><b>Killed by : </b>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_can_delete_a_organization()]</span></span> removed call to edu/ucsb/cs156/example/repositories/UCSBOrganizationRepository::delete &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -2138,7 +2138,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7ac1161f_135'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteOrganization<br/><b>Killed by : </b>none</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::deleteOrganization &rarr; NO_COVERAGE</span>
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>deleteOrganization<br/><b>Killed by : </b>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_can_delete_a_organization()]</span></span> replaced return value with null for edu/ucsb/cs156/example/controllers/UCSBOrganizationsController::deleteOrganization &rarr; KILLED</span>
 </div> 
 </td>
 </tr>
@@ -2164,7 +2164,7 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:an_admin_user_can_post_a_new_ucsborganization()] (11 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_can_edit_an_existing_organization()] (4 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist()] (4 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_cannot_edit_organization_that_does_not_exist()] (9 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:logged_in_users_can_get_all()] (3 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:logged_in_user_can_get_all_ucsborganizations()] (3 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists()] (3 ms)</li>
+<li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:an_admin_user_can_post_a_new_ucsborganization()] (15 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_can_delete_a_organization()] (7 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_can_edit_an_existing_organization()] (4 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_does_not_exist()] (6 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_cannot_edit_organization_that_does_not_exist()] (8 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:admin_tries_to_delete_non_existant_organization_and_gets_right_error_message()] (6 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:logged_in_users_can_get_all()] (3 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:logged_in_user_can_get_all_ucsborganizations()] (4 ms)</li><li>edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests.[engine:junit-jupiter]/[class:edu.ucsb.cs156.example.controllers.UCSBOrganizationsControllerTests]/[method:test_that_logged_in_user_can_get_by_id_when_the_id_exists()] (4 ms)</li>
 </ul>
 
 <br/>
